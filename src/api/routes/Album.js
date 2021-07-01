@@ -10,7 +10,7 @@ route.get('/', async (req, res) => {
         let docs = await album.find();
         res.json(docs);
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(500).json("Erro desconhecido");
     }
 })
 
@@ -20,7 +20,7 @@ route.get('/BuscaPorID/:id', async (req, res) => {
             albuns = await album.findById(id).populate('Banda');
         res.json(albuns);
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(404).json("Objeto não encontrado");
     }
 })
 
@@ -30,7 +30,7 @@ route.post('/SalvarAlbum', async (req, res) => {
         await albuns.save();
         res.json({ sucesso: true });
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(500).json("Erro desconhecido");
     }
 })
 
@@ -41,7 +41,7 @@ route.put('/AtualizarAlbum/:id', async (req, res) => {
         await album.findByIdAndUpdate(id, body);
         res.json({ sucesso: true });
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(404).json("Objeto não encontrado");
     }
 })
 
@@ -51,7 +51,7 @@ route.delete('/DeletaAlbum/:id', async (req, res) => {
         await album.findByIdAndDelete(id);
         res.json({ sucesso: true });
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(404).json("Objeto não encontrado");
     }
 })
 

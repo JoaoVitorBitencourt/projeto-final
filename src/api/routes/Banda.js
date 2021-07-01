@@ -10,7 +10,7 @@ route.get('/', async (req, res) => {
         let docs = await Banda.find();
         res.json(docs);
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(500).json("Erro desconhecido");
     }
 })
 
@@ -20,7 +20,7 @@ route.get('/BuscaPorID/:id', async (req, res) => {
             Bandas = await Banda.findById(id);
         res.json(Bandas);
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(404).json("Objeto não encontrado");
     }
 })
 
@@ -30,7 +30,7 @@ route.post('/Salvar', async (req, res) => {
         await Bandas.save();
         res.json({ sucesso: true });
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(500).json("Erro desconhecido");
     }
 })
 
@@ -41,7 +41,7 @@ route.put('/Atualizar/:id', async (req, res) => {
         await Banda.findByIdAndUpdate(id, body);
         res.json({ sucesso: true });
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(404).json("Objeto não encontrado");
     }
 })
 
@@ -51,7 +51,7 @@ route.delete('/Deletar/:id', async (req, res) => {
         await Banda.findByIdAndDelete(id);
         res.json({ sucesso: true });
     } catch (err) {
-        res.status(500).json({ sucesso: false });
+        res.status(404).json("Objeto não encontrado");
     }
 })
 
