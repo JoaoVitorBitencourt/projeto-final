@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "dev:start": "nodemon ./src/index.js",
     "start": "node ./src/index.js"
   },
   "author": "João Vitor Silva de Bitencourt",
